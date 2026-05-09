@@ -1,27 +1,17 @@
-import React from "react";
-import Header from "./Header";
-import Hero from "./Hero";
-import Services from "./Services";
-import StatsBanner from "./StatsBanner";
-import WhyUs from "./WhyUs";
-import Testimonials from "./Testimonials";
-import Contact from "./Contact";
-import Footer from "./Footer";
-import UrgencyBar from "./UrgencyBar";
+
+import React, { useState } from "react";
+import AdminNavBar from "./AdminNavBar";
+import QuestionForm from "./QuestionForm";
+import QuestionList from "./QuestionList";
 
 function App() {
+  const [page, setPage] = useState("List");
+
   return (
-    <div>
-      <Header />
-      <Hero />
-      <Services />
-      <StatsBanner />
-      <WhyUs />
-      <Testimonials />
-      <Contact />
-      <Footer />
-      <UrgencyBar />
-    </div>
+    <main>
+      <AdminNavBar onChangePage={setPage} />
+      {page === "Form" ? <QuestionForm /> : <QuestionList />}
+    </main>
   );
 }
 
